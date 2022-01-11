@@ -1,9 +1,11 @@
 package StepsDefinition;
 
+
 import Models.Authentication;
 import Models.LoginPage;
 import Models.MainPage;
 import Models.RegisterPage;
+import Models.*;
 import Utils.PropertyReader;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
@@ -19,12 +21,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class MyStepdefs {
     WebDriver driver;
     MainPage mainPage;
     LoginPage loginPage;
     RegisterPage registerPage;
     Authentication authenticationPage;
+    ProductPage productPage;
     PropertyReader propertyReader;
     public static final Logger logger = LogManager.getLogger(MyStepdefs.class);
 
@@ -101,7 +107,6 @@ public class MyStepdefs {
                 String password = authLogin.get(1);
                 loginPage.passField(password);
                 break;
-
         }
     }
 
@@ -128,6 +133,12 @@ public class MyStepdefs {
                 loginPage = new LoginPage(driver);
                 loginPage.signInButton();
                 break;
+            case "TShirt":
+                productPage = new ProductPage(driver);
+                productPage.tShirtProduct();
+            case "Add to cart":
+                productPage = new ProductPage(driver);
+                productPage.addToCartButton();
         }
     }
 
@@ -163,13 +174,19 @@ public class MyStepdefs {
     @Then("user is not redirected to {string} page")
     public void userIsNotRedirectedToPage(String page) {
         String myAccountUrl = driver.getCurrentUrl();
-        Assert.assertNotEquals(myAccountUrl, propertyReader.getMyAccountUrl());
+        assertThat(myAccountUrl, is(not(equalTo(propertyReader.getMyAccountUrl()))));
     }
 
     @Then("error message {string} is displayed")
     public void errorMessageIsDisplayed(String errorMessage) {
         loginPage = new LoginPage(driver);
         loginPage.authFailed();
+    }
+
+    @And("user clicks on {string} product")
+    public void userClicksOnProduct(String name) {
+        productPage = new ProductPage(driver);
+        productPage.tShirtProduct();
     }
 
 /*    @After
