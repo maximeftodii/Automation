@@ -1,3 +1,3 @@
 # Automation
 
-Automation training project
+Automation practice project
