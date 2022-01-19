@@ -122,7 +122,7 @@ public class MyStepdefs {
     }
 
     @And("user clicks on {string} button")
-    public void userClicksOnButton(String button) {
+    public void userClicksOnButton(String button) throws InterruptedException {
         switch (button) {
             case "Create account":
                 authenticationPage = new Authentication(driver);
@@ -153,6 +153,7 @@ public class MyStepdefs {
                 productPage.addToCartButton();
                 break;
             case "Close":
+                Thread.sleep(10000);
                 productPage = new ProductPage(driver);
                 productPage.closeButton();
                 break;
@@ -160,11 +161,12 @@ public class MyStepdefs {
                 productPage = new ProductPage(driver);
                 productPage.cartButton();
                 break;
-            case "Proceed to checkout1":
+            case "Proceed to checkout popup":
+                Thread.sleep(10000);
                 productPage = new ProductPage(driver);
                 productPage.checkoutProceedPopUp();
                 break;
-            case "Proceed to checkout2":
+            case "Proceed to checkout summary":
                 productPage = new ProductPage(driver);
                 productPage.checkOutProceedButton();
                 break;
@@ -172,9 +174,9 @@ public class MyStepdefs {
                 productPage = new ProductPage(driver);
                 productPage.termsTickBox();
                 break;
-            case "Proceed to checkout4":
+            case "Proceed to checkout address":
                 productPage = new ProductPage(driver);
-                productPage.orderReviewProceed();
+                productPage.checkoutAddressButton();
                 break;
             case "Wire":
                 productPage = new ProductPage(driver);
@@ -184,6 +186,9 @@ public class MyStepdefs {
                 productPage = new ProductPage(driver);
                 productPage.orderConfirm();
                 break;
+            case "Proceed to checkout shipping":
+                productPage = new ProductPage(driver);
+                productPage.checkoutProceedShipping();
         }
     }
 

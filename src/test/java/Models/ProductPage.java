@@ -10,22 +10,30 @@ public class ProductPage {
 
     @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[6]/ul[1]/li[3]/a[1]")
     public WebElement tShirtPageLink;
-    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[2]/ul[1]/li[1]/div[1]/div[1]/div[1]/a[1]/img[1]")
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/ul[1]/li[1]/div[1]/div[2]/h5[1]/a[1]")
     public WebElement tShirtProduct;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/form[1]/div[1]/div[3]/div[1]/p[1]/button[1]/span[1]")
     public WebElement addToCartButton;
+    //Pop up proceed to checkout button
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[2]/div[4]/a[1]/span[1]")
     public WebElement checkoutProceedPopUp;
+    //Summary checkout button
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[2]/a[1]/span[1]")
-    public WebElement checkOutProceedButton;
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]/div[1]/p[2]/div[1]/span[1]/input[1]")
+    public WebElement checkOutProceedSummary;
+    //Address checkout button
+    @FindBy(xpath = "//body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/form[1]/p[1]/button[1]/span[1]")
+    public WebElement checkoutAddressButton;
+    //Shipping page tickbox
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]/div[1]/p[2]/label[1]")
     public WebElement termsTickBox;
+    //Shipping page checkout button
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]/p[1]/button[1]/span[1]")
-    public WebElement orderReviewProceed;
+    public WebElement checkoutProceedShipping;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[3]/div[1]/div[1]/p[1]/a[1]/span[1]")
     public WebElement payByWire;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/p[1]/a[1]")
     public WebElement payByCheck;
+    //Order confirm page button
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/form[1]/p[1]/button[1]/span[1]")
     public WebElement orderConfirm;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]")
@@ -59,19 +67,19 @@ public class ProductPage {
     }
 
     public void checkOutProceedButton() {
-        checkOutProceedButton.click();
+        checkOutProceedSummary.click();
     }
 
     public void termsTickBox() {
         termsTickBox.click();
     }
 
-    public void orderReviewProceed() {
-        orderReviewProceed.click();
+    public void checkoutProceedShipping() {
+        checkoutProceedShipping.click();
     }
 
     public void payByWire() {
-        payByCheck.click();
+        payByWire.click();
     }
 
     public void orderConfirm() {
@@ -92,5 +100,9 @@ public class ProductPage {
 
     public void cartProduct() {
         cartButton.isDisplayed();
+    }
+
+    public void checkoutAddressButton() {
+        checkoutAddressButton.click();
     }
 }

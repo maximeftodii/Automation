@@ -23,20 +23,18 @@ Feature: Product order
     And user clicks on "Cart" button
     Then product "Faded Short" is displayed
 
-  Scenario: TC02 Check that product can be ordered
-
-  Scenario: TC01 Check that a product can be added to cart
+  Scenario: TC02 Check that a product can be ordered successfully
     When user clicks on "TShirt" button
     And user clicks on "Faded Short" product
     And user clicks on "Add to cart" button
     And message "successfully added" is displayed
-    And user clicks on "Proceed to checkout1" button
+    And user clicks on "Proceed to checkout popup" button
     Then user is redirected to "Cart" page
-    And user clicks on "Proceed to checkout2" button
+    And user clicks on "Proceed to checkout summary" button
     Then user is redirected to "Review address" page
-    And user clicks on "Proceed to checkout3" button
+    And user clicks on "Proceed to checkout address" button
     Then user clicks on "Agree Tickbox" button
-    And user clicks on "Proceed to checkout4" button
+    And user clicks on "Proceed to checkout shipping" button
     Then user is redirected to "Payment" page
     And user clicks on "Wire" button
     Then user is redirected to "Confirm order" page
