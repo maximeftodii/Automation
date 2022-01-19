@@ -30,6 +30,12 @@ public class ProductPage {
     public WebElement orderConfirm;
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]")
     public WebElement successMessage;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[1]/span[1]")
+    public WebElement closeButton;
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[3]/div[1]/a[1]")
+    public WebElement cartButton;
+    @FindBy(xpath = "//tbody/tr[@id='product_1_1_0_628961']/td[2]/p[1]/a[1]")
+    public WebElement cartProduct;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -60,7 +66,7 @@ public class ProductPage {
         termsTickBox.click();
     }
 
-    public void setOrderReviewProceed() {
+    public void orderReviewProceed() {
         orderReviewProceed.click();
     }
 
@@ -74,5 +80,17 @@ public class ProductPage {
 
     public void successMessage() {
         successMessage.isDisplayed();
+    }
+
+    public void closeButton() {
+        closeButton.click();
+    }
+
+    public void cartButton() {
+        cartButton.click();
+    }
+
+    public void cartProduct() {
+        cartButton.isDisplayed();
     }
 }

@@ -1,10 +1,6 @@
 package StepsDefinition;
 
 
-import Models.Authentication;
-import Models.LoginPage;
-import Models.MainPage;
-import Models.RegisterPage;
 import Models.*;
 import Utils.PropertyReader;
 import io.cucumber.datatable.DataTable;
@@ -66,6 +62,21 @@ public class MyStepdefs {
                 Assert.assertEquals(myAcc, propertyReader.getMyAccountUrl());
                 logger.info(myAcc, driver.getCurrentUrl());
                 break;
+            case "Cart":
+                String cartUrl = driver.getCurrentUrl();
+                Assert.assertEquals(cartUrl, propertyReader.getCartUrl());
+                break;
+            case "Address review":
+                String addressReview = driver.getCurrentUrl();
+                Assert.assertEquals(addressReview, propertyReader.getAddressReview());
+                break;
+            case "Payment":
+                String paymentUrl = driver.getCurrentUrl();
+                Assert.assertEquals(paymentUrl, propertyReader.getPaymentUrl());
+                break;
+            case "Confirm order":
+                String confirmOrderUrl = driver.getCurrentUrl();
+                Assert.assertEquals(confirmOrderUrl, propertyReader.getConfirmOrderUrl());
         }
     }
 
@@ -135,10 +146,44 @@ public class MyStepdefs {
                 break;
             case "TShirt":
                 productPage = new ProductPage(driver);
-                productPage.tShirtProduct();
+                productPage.tShirtPageLink();
+                break;
             case "Add to cart":
                 productPage = new ProductPage(driver);
                 productPage.addToCartButton();
+                break;
+            case "Close":
+                productPage = new ProductPage(driver);
+                productPage.closeButton();
+                break;
+            case "Cart":
+                productPage = new ProductPage(driver);
+                productPage.cartButton();
+                break;
+            case "Proceed to checkout1":
+                productPage = new ProductPage(driver);
+                productPage.checkoutProceedPopUp();
+                break;
+            case "Proceed to checkout2":
+                productPage = new ProductPage(driver);
+                productPage.checkOutProceedButton();
+                break;
+            case "Agree Tickbox":
+                productPage = new ProductPage(driver);
+                productPage.termsTickBox();
+                break;
+            case "Proceed to checkout4":
+                productPage = new ProductPage(driver);
+                productPage.orderReviewProceed();
+                break;
+            case "Wire":
+                productPage = new ProductPage(driver);
+                productPage.payByWire();
+                break;
+            case "Confirm order":
+                productPage = new ProductPage(driver);
+                productPage.orderConfirm();
+                break;
         }
     }
 
@@ -177,16 +222,34 @@ public class MyStepdefs {
         assertThat(myAccountUrl, is(not(equalTo(propertyReader.getMyAccountUrl()))));
     }
 
-    @Then("error message {string} is displayed")
-    public void errorMessageIsDisplayed(String errorMessage) {
-        loginPage = new LoginPage(driver);
-        loginPage.authFailed();
+    @Then("message {string} is displayed")
+    public void errorMessageIsDisplayed(String message) {
+
+        switch (message) {
+            case "Authentication failed":
+                loginPage = new LoginPage(driver);
+                loginPage.authFailed();
+                break;
+            case "successfully added":
+                productPage = new ProductPage(driver);
+                productPage.successMessage();
+            case "Order complete":
+                productPage = new ProductPage(driver);
+                productPage.successMessage();
+                break;
+        }
     }
 
     @And("user clicks on {string} product")
     public void userClicksOnProduct(String name) {
         productPage = new ProductPage(driver);
         productPage.tShirtProduct();
+    }
+
+    @Then("product {string} is displayed")
+    public void productIsDisplayed(String name) {
+        productPage = new ProductPage(driver);
+        productPage.cartProduct();
     }
 
 /*    @After

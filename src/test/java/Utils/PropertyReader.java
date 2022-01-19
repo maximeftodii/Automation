@@ -66,8 +66,32 @@ public class PropertyReader {
     }
 
     public String getMyAccountUrl() {
-        String myacc = properties.getProperty("myAcc");
-        if (myacc != null) return myacc;
-        else throw new RuntimeException("Account URL not specified in the property.properties files");
+        String myAcc = properties.getProperty("myAcc");
+        if (myAcc != null) return myAcc;
+        else throw new RuntimeException("Account URL not specified in the property.properties file");
+    }
+
+    public String getCartUrl() {
+        String cartUrl = properties.getProperty("cartUrl");
+        if (cartUrl != null) return cartUrl;
+        else throw new RuntimeException("Cart URL not specified in the property.properties file");
+    }
+
+    public String getAddressReview() {
+        String addressReview = properties.getProperty("addressReview");
+        if (addressReview != null) return addressReview;
+        else throw new RuntimeException("Address review URL not specified in the property.properties file");
+    }
+
+    public String getPaymentUrl() {
+        String paymentUrl = properties.getProperty("paymentUrl");
+        if (paymentUrl != null) return paymentUrl;
+        else throw new RuntimeException("Payment URL not specified in the property.properties file");
+    }
+
+    public String getConfirmOrderUrl() {
+        String confirmOrderUrl = properties.getProperty("confirmOrderUrl");
+        if (confirmOrderUrl != null) return confirmOrderUrl;
+        else throw new RuntimeException("Order confirm URL si not specified in the property.properties file");
     }
 }

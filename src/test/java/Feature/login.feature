@@ -21,5 +21,5 @@ Feature: Login
       | asdasdad@gmail.com |
       | asdasda123         |
     And user clicks on "Login" button
-    Then error message "Authentication failed" is displayed
+    Then message "Authentication failed" is displayed
     And user is not redirected to "My account" page
